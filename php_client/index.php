@@ -1,6 +1,7 @@
 <?php
 
 use Elasticsearch\ClientBuilder;
+
 require 'vendor/autoload.php';
 
 $hosts = [
@@ -11,12 +12,27 @@ $clientBuilder = ClientBuilder::create();   // Vytvorenie noveho ClientBuilder-a
 $clientBuilder->setHosts($hosts);           // Nastavenie hostu
 $client = $clientBuilder->build();
 
-// $params = [
-//     'index' => 'my_index',
-//     'id'    => 'my_id'
-// ];
+$name = 'Laser';
 
-// $response = $client->get($params);
-// print_r($response);
+$params = [
+  'index' => 'produkty',
+  'body'  => [
+    'query' => [
+      'bool' => [
+        'should' => [
+          ['wildcard' => ['Nazov' => '*' . $name . '*']]
+        ]
+      ]
+    ]
+  ]
+];
 
-?>
+$results = $client->search($params);
+
+// print_r($results);
+
+// echo "</br> </br>";
+
+foreach ($results['hits']['hits'] as $result => $value) {
+  print_r($value['_source']);
+}
