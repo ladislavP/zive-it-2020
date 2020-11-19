@@ -1,7 +1,0 @@
-config: default
-server:
-  listen:
-    - port: 9999
-      host: 0.0.0.0
-elasticsearch:
-  node: 'http://localhost:9201'
