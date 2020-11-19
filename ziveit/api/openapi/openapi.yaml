@@ -14,30 +14,6 @@ paths:
     x-exegesis-controller: index_ctrl
     get:
       operationId: search
-      tags: [ System ]
-      responses:
-        200:
-          description: Openapi document
-          content:
-            application/json:
-              schema:
-                type: object
-  /test-2:
-    x-exegesis-controller: index_ctrl
-    get:
-      operationId: test2
-      tags: [System]
-      responses:
-        200:
-          description: Openapi document
-          content:
-            application/json:
-              schema:
-                type: object
-  /test:
-    x-exegesis-controller: index_ctrl
-    get:
-      operationId: test
       tags: [System]
       responses:
         200:

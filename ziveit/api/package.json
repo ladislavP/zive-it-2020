@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@elastic/elasticsearch": "^7.5.0",
+    "@elastic/elasticsearch": "^7.9.3",
     "config": "^3.2.4",
     "debug": "^4.1.1",
     "exegesis-koa": "git+https://github.com/bart-sk/exegesis#koa",
