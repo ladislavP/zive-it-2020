@@ -1,2 +1,3 @@
 docker/elastic
 php_client/vendor
+.idea
