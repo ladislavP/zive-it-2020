@@ -10,6 +10,14 @@ services:
       - xpack.security.enabled=false
     ports:
       - "9201:9200"
+  logstash:
+    image: docker.elastic.co/logstash/logstash
+    volumes:
+      - ./logstash/usr/share/logstash/pipeline
+    ports:
+      - "5000:5000"
+    depends_on:
+      - elasticsearch
   kibana:
     image: kibana:7.9.3
     ports:
