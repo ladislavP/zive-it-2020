@@ -1,0 +1,86 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: Zive IT 2020 - API
+servers:
+  - url: /{version}
+    variables:
+      version:
+        enum:
+          - v1
+        default: v1
+paths:
+  /search:
+    x-exegesis-controller: index_ctrl
+    get:
+      operationId: search
+      tags: [ System ]
+      responses:
+        200:
+          description: Openapi document
+          content:
+            application/json:
+              schema:
+                type: object
+  /test-2:
+    x-exegesis-controller: index_ctrl
+    get:
+      operationId: test2
+      tags: [System]
+      responses:
+        200:
+          description: Openapi document
+          content:
+            application/json:
+              schema:
+                type: object
+  /test:
+    x-exegesis-controller: index_ctrl
+    get:
+      operationId: test
+      tags: [System]
+      responses:
+        200:
+          description: Openapi document
+          content:
+            application/json:
+              schema:
+                type: object
+  /openapi.json:
+    x-exegesis-controller: index_ctrl
+    get:
+      operationId: openapiJson
+      tags: [System]
+      responses:
+        200:
+          description: Openapi document
+          content:
+            application/json:
+              schema:
+                type: object
+
+components:
+  securitySchemes:
+    authorizationKey:
+      type: apiKey
+      in: query
+      name: api-key
+  schemas:
+    Error:
+      additionalProperties: true
+      properties:
+        description:
+          nullable: true
+          type: string
+        name:
+          type: string
+        payload:
+          additionalProperties: true
+          nullable: true
+          type: object
+        statusCode:
+          type: number
+        userinfo:
+          description: Localized info
+          type: string
+      type: object

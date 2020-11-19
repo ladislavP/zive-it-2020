@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "outDir": "dist",
+    "sourceMap": true,
+    "baseUrl": "./",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "allowJs": true,
+    "lib":  ["es2015","es2017", "esnext"],
+    "downlevelIteration": true,
+    "experimentalDecorators": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
