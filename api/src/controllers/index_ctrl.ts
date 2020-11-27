@@ -8,19 +8,20 @@ export const openapiJson = async (ctx): Promise<void> => {
 export const search = async (ctx): Promise<void> => {
   const config = require('config');
   const elasticsearchConfig = config.get('elasticsearch');
+  const query = ctx.params.query.search_query;
 
   const { Client } = require('@elastic/elasticsearch');
   const client = new Client(elasticsearchConfig);
 
   const result = await client.search({
-    index: 'produkty_index',
+    index: 'products',
     body: {
       query: {
         bool: {
           should: {
               wildcard: {
                 'Nazov': {
-                  value: '*laser*'
+                  value: {query}
                 }
               }
           }
