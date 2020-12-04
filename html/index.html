@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Web search</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"> -->
+</head>
+
+<body>
+
+    <header class="title">
+        <h2>Web search</h2>
+    </header>
+
+    <main class="wrapper">
+        <input oninput="onInputDebounced({ value:this.value})" type="text" class="input" placeholder="What are you looking for?">
+        <!-- <button onclick="search()"><i class="fas fa-search"></i></button> -->
+    </main>
+
+    <section id="output">
+        <ul class="outputList" id="outputList">
+        </ul>
+    </section>
+
+</body>
+
+
+<script>
+    //  
+
+    const DEBOUNCE_DURATION = 500; // in milliseconds
+
+    function onInputChange({
+        value
+    }) {
+        getProducts(value);
+    }
+
+    const onInputDebounced = debounce(({
+        value
+    }) => {
+        onInputChange({
+            value
+        });
+    }, DEBOUNCE_DURATION);
+
+    const getProducts = (productName) => {
+        fetch(`http://localhost:9999/v1/search?search_query=${productName}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                customLog(data.body.hits.hits)
+            });
+    }
+
+    // -----------------------------
+    // Helper functions
+    // -----------------------------
+    function debounce(callback, wait, context = this) {
+
+        let timeout = null;
+        let callbackArgs = null;
+
+        const later = () => callback.apply(context, callbackArgs);
+
+        return function({
+            id
+        }) {
+            callbackArgs = arguments;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    function customLog(products) {
+        products.map(product => {
+            const newLog = document.createElement('li');
+            newLog.innerHTML = product._source.Nazov;
+            document.getElementById('outputList').prepend(newLog);
+        })
+
+    }
+</script>
+
+</html>

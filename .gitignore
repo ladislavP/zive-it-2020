@@ -1,3 +1,5 @@
 docker/elastic
 php_client/vendor
 .idea
+vendor
+api/node_modules

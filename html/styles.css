@@ -1,51 +1,45 @@
-body{
+body {
     margin: 0;
     padding: 0;
     outline: none;
     box-sizing: border-box;
     font-family: 'Calibri', cursive;
     background-size: cover;
-    background: rgba(0, 0, 0,0.6);
-    width: 100%;
-    height: 100vh;
+    background: #ddd;
+    color: #777;
 }
 
-div.title {
+header.title {
     text-align: center;
-    font-family: 'Calibri', cursive;
     font-size: 50px;
-    color: #ffec00;
 }
 
-.wrapper{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0,0.6);
-    max-width: 550px;
+.wrapper {
+    margin: auto;
     width: 100%;
-    padding: 15px;
+    max-width: 550px;
     display: flex;
-    justify-content: space-between;
     border-radius: 5px;
 }
 
 .wrapper .input {
-    width: 85%;
+    width: 100%;
     padding: 15px 20px;
     border: none;
     border-radius: 5px;
     font-weight: bold;
+    color: #777;
 }
 
-.searchbtn {
-    background: #ffec00;
-    width: 10%;
-    border-radius: 5px;
-    position: relative;
-    cursor: pointer;
+#output {
+    padding: 0;
 }
+
+#output ul {
+    list-style-type: none;
+}
+
+
 /*
 .searchbtn .fas {
     position: absolute;
