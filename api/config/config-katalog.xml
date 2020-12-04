@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <default>
+        <!-- Konfiguracia aplikacie -->
+        <App>
+            <Name>Katalóg</Name>
+            <IconClass>edit</IconClass>
+            <Hint>Katalóg</Hint>
+            <DefaultAction>products</DefaultAction>
+        </App>
+        <helpFile>./application/config/admin/help-catalog.html</helpFile>
+        <defaultLang>sk</defaultLang>
+
+        <application-menu>
+            <application-menu-item>
+                <acl resource="catalog-settings"/>
+                <name>Nastavenia katalógu</name>
+                <icon_class>folder</icon_class>
+                <action_id>category</action_id>
+                <submenu>
+                    <application-menu-item>
+                        <acl resource="catalog-settings-categories"/>
+                        <name>Kategórie</name>
+                        <action_id>category</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <acl resource="catalog-settings-other"/>
+                        <name>Typy produktov</name>
+                        <action_id>types</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <acl resource="catalog-settings-other"/>
+                        <name>Parametre</name>
+                        <action_id>attribs</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <acl resource="catalog-settings-other"/>
+                        <name>Vyhľadávanie</name>
+                        <action_id>search</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <acl resource="catalog-settings-other"/>
+                        <name>Katalógové skupiny</name>
+                        <action_id>groups</action_id>
+                    </application-menu-item>
+                </submenu>
+            </application-menu-item>
+            <application-menu-item>
+                <acl resource="catalog-products"/>
+                <name>Produkty v katalógu</name>
+                <action_id>products</action_id>
+                <submenu>
+                    <application-menu-item>
+                        <name>Zobraziť produkty</name>
+                        <action_id>products</action_id>
+                        <params>?clear</params>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Vytvoriť produkt</name>
+                        <action_id>product-add</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Priradenie kategórií</name>
+                        <action_id>category-assignment</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Katalógová väzba</name>
+                        <action_id>product2category</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Otázky k produktom</name>
+                        <action_id>product-questions</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Kategórie produktových otázok</name>
+                        <action_id>product-category-questions</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Produktové zoznamy</name>
+                        <action_id>product-lists</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Last minute</name>
+                        <action_id>lastminute</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Darčeky k objednávke</name>
+                        <action_id>cart-gifts</action_id>
+                    </application-menu-item>
+                </submenu>
+            </application-menu-item>
+            <application-menu-item>
+                <acl resource="catalog-products"/>
+                <name>Nastavenie akcií</name>
+                <controller_id>sale</controller_id>
+                <action_id>list</action_id>
+                <submenu>
+                    <application-menu-item>
+                        <name>Produktové akcie</name>
+                        <controller_id>sale</controller_id>
+                        <action_id>list</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Akcie nad košíkom</name>
+                        <controller_id>cart-sale</controller_id>
+                        <action_id>list</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Akcie doprava zdarma</name>
+                        <controller_id>cart-transport</controller_id>
+                        <action_id>list</action_id>
+                    </application-menu-item>
+                </submenu>
+            </application-menu-item>
+            <application-menu-item>
+                <acl resource="catalog-types"/>
+                <name>Číselníky</name>
+                <icon_class>web</icon_class>
+                <submenu>
+                    <application-menu-item>
+                        <name>Značky</name>
+                        <action_id>brand-list</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Dostupnosť</name>
+                        <action_id>availability</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Sklady</name>
+                        <action_id>stores</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Ľudia</name>
+                        <action_id>people</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Skupiny materiálov</name>
+                        <action_id>material-groups</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Produktové materiály</name>
+                        <action_id>materials</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Produktové časti</name>
+                        <action_id>product-parts</action_id>
+                    </application-menu-item>
+                </submenu>
+            </application-menu-item>
+            <application-menu-item>
+                <acl resource="catalog-tools"/>
+                <name>Nástroje</name>
+                <icon_class>web</icon_class>
+                <submenu>
+                    <application-menu-item>
+                        <name>Report skladu</name>
+                        <controller_id>report</controller_id>
+                        <action_id>stock</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Import</name>
+                        <action_id>product-import</action_id>
+                    </application-menu-item>
+                    <application-menu-item>
+                        <name>Autocomplete index</name>
+                        <action_id>autocomplete-index</action_id>
+                    </application-menu-item>
+                </submenu>
+            </application-menu-item>
+        </application-menu>
+        <acl>
+            <resources>
+                <resource id="application-catalog">
+                    <name>Aplikácia katalóg</name>
+                </resource>
+                <resource id="catalog">
+                    <name>Katalóg</name>
+                </resource>
+                <resource id="catalog-settings" parent="catalog">
+                    <name>Nastavenia katalógu</name>
+                </resource>
+                <resource id="catalog-settings-categories" parent="catalog-settings">
+                    <name>Kategórie</name>
+                </resource>
+                <resource id="catalog-settings-other" parent="catalog-settings">
+                    <name>Ostatné</name>
+                </resource>
+                <resource id="catalog-products" parent="catalog">
+                    <name>Produkty v katalógu</name>
+                </resource>
+                <resource id="catalog-types" parent="catalog">
+                    <name>Číselníky</name>
+                </resource>
+                <resource id="catalog-tools" parent="catalog">
+                    <name>Nástroje</name>
+                </resource>
+            </resources>
+            <mvc2acl>
+                <mvc module="BartKatalog" controller="admin-catalog" action="products" aclResource="catalog-products"/>
+                <mvc module="BartKatalog" controller="admin-catalog" action="product-form" aclResource="catalog-products"/>
+                <mvc module="BartKatalog" controller="admin-catalog" action="product-import" aclResource="catalog-tools"/>
+                <mvc module="BartKatalog" controller="admin-catalog" action="brand-list" aclResource="catalog-types"/>
+                <mvc module="BartKatalog" controller="admin-catalog" action="availability" aclResource="catalog-types"/>
+                <mvc module="BartKatalog" controller="admin-catalog" action="stores" aclResource="catalog-types"/>
+                <mvc module="BartKatalog" controller="admin-catalog" action="people" aclResource="catalog-types"/>
+                <mvc module="BartKatalog" controller="admin-catalog" action="category" aclResource="catalog-settings-categories"/>
+                <mvc module="BartKatalog" controller="admin-catalog" action="types" aclResource="catalog-settings-other"/>
+                <mvc module="BartKatalog" controller="admin-catalog" action="attribs" aclResource="catalog-settings-other"/>
+                <mvc module="BartKatalog" controller="admin-catalog" action="search" aclResource="catalog-settings-other"/>
+                <mvc module="BartKatalog" controller="admin-catalog" action="groups" aclResource="catalog-settings-other"/>
+            </mvc2acl>
+        </acl>
+
+    </default>
+</config>

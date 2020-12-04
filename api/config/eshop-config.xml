@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <default>
+        <App>
+            <Name>Eshop</Name>
+            <IconClass>edit</IconClass>
+            <Hint>Eshop</Hint>
+            <DefaultAction>webSitemap</DefaultAction>
+        </App>
+        <helpFile>./application/config/admin/help-eshop.html</helpFile>
+        <defaultLang>sk</defaultLang>
+        <langConfig>./application/locale/index.xml</langConfig>
+        <localeReloadMesages></localeReloadMesages>
+
+        <application-menu>
+            <application-menu-item>
+                <acl resource="eshop-orders" />
+                <name>Objednávky</name>
+                <icon_class>folder</icon_class>
+                <action_id>order-list</action_id>
+                <submenu>
+                    <application-menu-item>
+                    <name>Vyhľadávanie</name>
+                    <action_id>order-search</action_id>
+                </application-menu-item>
+                <eshop-order-statuses />
+                <application-menu-item>
+                    <name>Neuhradené po lehote</name>
+                    <action_id>order-list-notpaid</action_id>
+                </application-menu-item>
+                </submenu>
+            </application-menu-item>
+            <application-menu-item>
+                <acl resource="eshop-stats" />
+                <name>Štatistiky a prehľady</name>
+                <icon_class>folder</icon_class>
+                <submenu>
+                    <application-menu-item>
+                    <name>Obraty</name>
+                    <action_id>report-custom</action_id>
+                </application-menu-item>
+                <application-menu-item>
+                    <name>Objednaný tovar</name>
+                    <action_id>ordered-products</action_id>
+                </application-menu-item>
+                <application-menu-item>
+                    <name>Podľa značiek</name>
+                    <action_id>report-bybrand</action_id>
+                </application-menu-item>
+                <application-menu-item>
+                    <name>Podľa spotrebiteľov</name>
+                    <action_id>report-bycustomer</action_id>
+                </application-menu-item>
+                <application-menu-item>
+                    <name>Najpredávanejšie</name>
+                    <action_id>report-mostbuy</action_id>
+                </application-menu-item>
+                </submenu>
+            </application-menu-item>
+            <application-menu-item>
+                <acl resource="eshop-settings" />
+                <name>Nastavenia</name>
+                <icon_class>folder</icon_class>
+                <submenu>
+                    <application-menu-item>
+                    <name>Všeobecné</name>
+                    <action_id>config</action_id>
+                </application-menu-item>
+                <!--<application-menu-item>-->
+                    <!--<name>Predajne</name>-->
+                    <!--<action_id>shops</action_id>-->
+                <!--</application-menu-item>-->
+                <application-menu-item>
+                    <name>Spôsoby dodania</name>
+                    <action_id>delivery-types</action_id>
+                </application-menu-item>
+                <application-menu-item>
+                    <name>Spôsoby platby</name>
+                    <action_id>payment-types</action_id>
+                </application-menu-item>
+                <application-menu-item>
+                    <name>Povolené kombinácie</name>
+                    <action_id>delivery2payment</action_id>
+                </application-menu-item>
+                <!--<application-menu-item>-->
+                    <!--<name>Objednávací proces</name>-->
+                    <!--<action_id>workflow</action_id>-->
+                <!--</application-menu-item>-->
+                <application-menu-item>
+                    <name>Cenník dodania - pravidlá</name>
+                    <action_id>delivery-rules</action_id>
+                </application-menu-item>
+                <!--<application-menu-item>-->
+                    <!--<name>Oznámenia</name>-->
+                    <!--<action_id>messages</action_id>-->
+                <!--</application-menu-item>-->
+                <application-menu-item>
+                    <name>Šablóny emailov</name>
+                    <action_id>emails</action_id>
+                </application-menu-item>
+                <application-menu-item>
+                    <name>Hodiny expedície</name>
+                    <action_id>expedition-hours</action_id>
+                </application-menu-item>
+                <application-menu-item>
+                    <name>Voľné dni</name>
+                    <action_id>free-days</action_id>
+                </application-menu-item>
+                </submenu>
+            </application-menu-item>
+            <application-menu-item>
+                <acl resource="eshop-giftcards" />
+                <name>Poukážky</name>
+                <icon_class>folder</icon_class>
+                <submenu>
+                    <application-menu-item>
+                    <name>Darčekové poukážky</name>
+                    <action_id>gift-cards</action_id>
+                </application-menu-item>
+                </submenu>
+            </application-menu-item>
+        </application-menu>
+
+        <acl>
+            <resources>
+                <resource id="application-eshop">
+                    <name>Aplikácia eshop</name>
+                </resource>
+                <resource id="eshop">
+                    <name>Eshop</name>
+                </resource>
+                <resource id="eshop-orders" parent="eshop">
+                    <name>Objednávky</name>
+                </resource>
+                <resource id="eshop-stats" parent="eshop">
+                    <name>Štatistiky a prehľady</name>
+                </resource>
+                <resource id="eshop-settings" parent="eshop">
+                    <name>Nastavenia</name>
+                </resource>
+                <resource id="eshop-giftcards" parent="eshop">
+                    <name>Poukážky</name>
+                </resource>
+            </resources>
+            <mvc2acl>
+                <mvc module="admin" controller="eshop" action="order-list" aclResource="eshop-orders"/>
+                <mvc module="admin" controller="eshop" action="order-search" aclResource="eshop-orders"/>
+                <mvc module="admin" controller="eshop" action="order-list-status" aclResource="eshop-orders"/>
+                <mvc module="admin" controller="eshop" action="order-list-notpaid" aclResource="eshop-orders"/>
+                <mvc module="admin" controller="eshop" action="order" aclResource="eshop-orders"/>
+                <mvc module="admin" controller="eshop" action="report-custom" aclResource="eshop-stats"/>
+                <mvc module="admin" controller="eshop" action="ordered-products" aclResource="eshop-stats"/>
+                <mvc module="admin" controller="eshop" action="report-bybrand" aclResource="eshop-stats"/>
+                <mvc module="admin" controller="eshop" action="report-bycustomer" aclResource="eshop-stats"/>
+                <mvc module="admin" controller="eshop" action="report-mostbuy" aclResource="eshop-stats"/>
+                <mvc module="admin" controller="eshop" action="config" aclResource="eshop-settings"/>
+                <mvc module="admin" controller="eshop" action="shops" aclResource="eshop-settings"/>
+                <mvc module="admin" controller="eshop" action="delivery-types" aclResource="eshop-settings"/>
+                <mvc module="admin" controller="eshop" action="delivery-type" aclResource="eshop-settings"/>
+                <mvc module="admin" controller="eshop" action="payment-types" aclResource="eshop-settings"/>
+                <mvc module="admin" controller="eshop" action="payment-type" aclResource="eshop-settings"/>
+                <mvc module="admin" controller="eshop" action="delivery2payment" aclResource="eshop-settings"/>
+                <mvc module="admin" controller="eshop" action="workflow" aclResource="eshop-settings"/>
+                <mvc module="admin" controller="eshop" action="delivery-rules" aclResource="eshop-settings"/>
+                <mvc module="admin" controller="eshop" action="messages" aclResource="eshop-settings"/>
+                <mvc module="admin" controller="eshop" action="emails" aclResource="eshop-settings"/>
+                <mvc module="admin" controller="eshop" action="emails-edit" aclResource="eshop-settings"/>
+                <mvc module="admin" controller="eshop" action="gift-cards" aclResource="eshop-giftcards"/>
+                <mvc module="admin" controller="eshop" action="edit-gift-card" aclResource="eshop-giftcards"/>
+            </mvc2acl>
+        </acl>
+
+    </default>
+</config>

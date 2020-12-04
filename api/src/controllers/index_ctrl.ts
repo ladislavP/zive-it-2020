@@ -21,13 +21,22 @@ export const search = async (ctx): Promise<void> => {
           should: {
               wildcard: {
                 'Nazov': {
-                  value: {query}
+                  value: query + "*"
                 }
               }
           }
         }
       }
     }
+  });
+
+  const fs = require('fs');
+  const fileContents = fs.readFileSync('config/config-katalog.xml');
+  const xml2js = require('xml2js');
+
+  var parser = new xml2js.Parser();
+  parser.parseString(fileContents, (err, result) => {
+    // result['config']['default']['0']['application-menu']['0']
   });
 
   resJson(ctx, result);
