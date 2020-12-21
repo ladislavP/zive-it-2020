@@ -19,7 +19,9 @@
   },
   "scripts": {
     "dev": "NODE_ENV=development DEBUG=api:*,crontab:*,log,db:*,error nodemon -e js,yaml,ts --ignore dist --delay 0.5 --exec ts-node ./src/api.ts",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "es-import-menu-items:production": "NODE_ENV=production node -r config/dotenv dist/cli/es-import-menu-items.js",
+    "test": ""
   },
   "devDependencies": {
     "@types/node": "^13.1.7"
