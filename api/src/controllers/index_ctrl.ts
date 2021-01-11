@@ -1,4 +1,4 @@
-import { ElasticSearchService } from "src/library/ElasticSearchService";
+import { ElasticSearchService } from "../library/ElasticSearchService";
 import {resJson} from "../helpers/utils";
 
 export const openapiJson = async (ctx): Promise<void> => {

@@ -20,13 +20,14 @@
   "scripts": {
     "dev": "NODE_ENV=development DEBUG=api:*,crontab:*,log,db:*,error nodemon -e js,yaml,ts --ignore dist --delay 0.5 --exec ts-node ./src/api.ts",
     "start": "npm run dev",
-    "es-import-menu-items:production": "NODE_ENV=production node -r config/dotenv dist/cli/es-import-menu-items.js",
-    "test": ""
+    "es-import-menu-items:development": "NODE_ENV=development npx ts-node src/cli/es-import-menu-items.ts config/config-katalog.xml",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/node": "^13.1.7"
   },
-   "jest": {
+
+  "jest": {
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
@@ -37,9 +38,7 @@
       "js",
       "jsx",
       "json",
-      "node"
-    ]
-  },
-  "scripts": {
-    "test": "jest"
+       "node"
+     ]
   }
+}

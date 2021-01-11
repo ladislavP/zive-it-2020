@@ -1,4 +1,4 @@
-import { ElasticSearchService } from "src/library/ElasticSearchService";
+import { ElasticSearchService } from "../library/ElasticSearchService";
 import * as fs from 'fs';
 import * as xml2js from 'xml2js';
 import * as process from 'process';
