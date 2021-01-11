@@ -5,8 +5,8 @@ body {
     box-sizing: border-box;
     font-family: 'Calibri', cursive;
     background-size: cover;
-    background: #ddd;
-    color: #777;
+    background: #fff;
+    color: #111;
 }
 
 header.title {
@@ -14,21 +14,35 @@ header.title {
     font-size: 50px;
 }
 
-.wrapper {
+.wrapper,
+.outputList {
     margin: auto;
     width: 100%;
     max-width: 550px;
+}
+
+.wrapper {
     display: flex;
     border-radius: 5px;
 }
 
+.outputList {
+    padding: 0;
+}
+
 .wrapper .input {
     width: 100%;
-    padding: 15px 20px;
-    border: none;
+    padding: 10px;
+    border: 1px solid #c3cad6;
     border-radius: 5px;
     font-weight: bold;
-    color: #777;
+    background: #eef1f5;
+}
+
+.outputList li {
+    display: block;
+    padding: 5px;
+    border: solid 1px #c3cad6;
 }
 
 #output {
