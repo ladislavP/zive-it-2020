@@ -1,6 +1,6 @@
 import { ElasticSearchService } from "src/library/ElasticSearchService";
 import * as fs from 'fs';
-import * as xml2js from "xml2js";
+import * as xml2js from 'xml2js';
 import * as process from 'process';
 
 // TODO test -> https://jestjs.io/ 
