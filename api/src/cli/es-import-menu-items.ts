@@ -47,7 +47,7 @@ async function startImport(){
             index: 'config-katalog'
         });
 
-        if(!configCatalogExists){
+        if(!configCatalogExists['body']){
             client.indices.create({
                 index: 'config-katalog',
                 body: {
@@ -58,10 +58,11 @@ async function startImport(){
                     }
                 }
             });
-        }
 
-        const body = dataset.flatMap(doc => [{ index: { _index: "config-katalog"} }, doc]);
-        await client.bulk({ refresh: true, body })
+
+            const body = dataset.flatMap(doc => [{ index: { _index: "config-katalog"} }, doc]);
+            await client.bulk({ refresh: true, body })
+        }
     });
 }
 
