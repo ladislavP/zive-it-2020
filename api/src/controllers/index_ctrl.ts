@@ -11,7 +11,7 @@ export const search = async (ctx): Promise<void> => {
 
   const client = ElasticSearchService.loadClient();
 
-  // const configCatalogExists = await client.indices.exists({
+  // const configCatalogExists = await client.indices.exists({c
   //   index: 'config-katalog'
   // });
 
@@ -55,17 +55,24 @@ export const search = async (ctx): Promise<void> => {
   //   });
   // }
   const result = await client.search({
-    index: ['products', 'config-katalog'],
+    index: ['products', 'config-katalog', 'toners'],
     body: {
       query: {
         bool: {
-          should: {
+          should: [{
+            wildcard: {
+              'Nazov': {
+                value: query + "*"
+              }
+            }
+          },
+            {
               wildcard: {
-                'Nazov': {
+                'column5': {
                   value: query + "*"
                 }
               }
-          }
+            }]
         }
       }
     }

@@ -32,10 +32,9 @@
 
     const DEBOUNCE_DURATION = 500; // in milliseconds
 
-    function onInputChange({
-        value
-    }) {
+    function onInputChange({ value }) {
         getProducts(value);
+        getCategory(value);
     }
 
     const onInputDebounced = debounce(({
@@ -55,6 +54,14 @@
             });
     }
 
+    const getCategory = (categoryName) => {
+        fetch(`http://localhost:9999/v1/search?search_query=${categoryName}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                customLog2(data.body.hits.hits)
+            });
+    }
     // -----------------------------
     // Helper functions
     // -----------------------------
@@ -78,6 +85,15 @@
         products.map(product => {
             const newLog = document.createElement('li');
             newLog.innerHTML = product._source.Nazov;
+            document.getElementById('outputList').prepend(newLog);
+        })
+
+    }
+
+    function customLog2(toners) {
+        toners.map(toner => {
+            const newLog = document.createElement('li');
+            newLog.innerHTML = toner._source.column5;
             document.getElementById('outputList').prepend(newLog);
         })
 
